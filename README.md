@@ -1,5 +1,5 @@
 # go-tput
-execute tput @ Go.
+execute tput by Go.
 
 # Result
 ```ShellSession
