@@ -16,3 +16,6 @@ execute tput by Go.
 | ---- | ---- |
 | tput.HR() | Print horizontal line |
 
+## Links
+* [kotaoue/go-tput-tester](https://github.com/kotaoue/go-tput-tester)
+
