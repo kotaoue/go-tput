@@ -1,25 +1,13 @@
-package main
+package tput
 
 import (
 	"fmt"
-	"os"
 	"os/exec"
 	"strconv"
 	"strings"
 )
 
-func main() {
-	tCol, err := terminalColumnLength()
-
-	if err != nil {
-		fmt.Fprintln(os.Stderr, err)
-		os.Exit(1)
-	}
-
-	fmt.Println(strings.Repeat("-", tCol))
-}
-
-func terminalColumnLength() (int, error) {
+func Cols() (int, error) {
 	s, err := exec.Command("tput", "cols").Output()
 	if err != nil {
 		return 0, err
@@ -31,4 +19,15 @@ func terminalColumnLength() (int, error) {
 	}
 
 	return i, nil
+}
+
+func HR() error {
+	tCol, _ := Cols()
+
+	if tCol == 0 {
+		tCol = 64
+	}
+
+	_, err := fmt.Println(strings.Repeat("-", tCol))
+	return err
 }
