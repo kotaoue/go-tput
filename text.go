@@ -13,6 +13,10 @@ func Smul() ([]byte, error) {
 	return output(exec.Command("tput", "smul"))
 }
 
+func Bold() ([]byte, error) {
+	return output(exec.Command("tput", "bold"))
+}
+
 func Sgr0() ([]byte, error) {
 	return output(exec.Command("tput", "sgr0"))
 }
