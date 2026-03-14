@@ -172,5 +172,5 @@ func main() {
 ```
 
 ## Links
-* [kotaoue/go-tput-tester](https://github.com/kotaoue/go-tput-tester)
 
+* [kotaoue/go-tput-tester](https://github.com/kotaoue/go-tput-tester)
