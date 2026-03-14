@@ -1,18 +1,150 @@
 # go-tput
-execute tput by Go.
+
+Execute [tput](https://man7.org/linux/man-pages/man1/tput.1.html) commands from Go.  
+`go-tput` provides a thin wrapper around the `tput` terminal utility, letting you apply colors, text effects, and terminal control sequences directly from your Go programs.
+
+## Installation
+
+```bash
+go get github.com/kotaoue/go-tput
+```
 
 ## Usage
-### Reading
+
+### Terminal Info
+
 | Function | Description |
 | ---- | ---- |
-| tput.Cols() | Number of columns in the terminal |
-| tput.HR() | Print horizontal line |
+| `tput.Cols() (int, error)` | Return the number of columns in the terminal |
+| `tput.HR() error` | Print a horizontal rule that spans the terminal width |
+
+### Colors
+
+Use `tput.Setaf(i int)` to set the foreground color. The following color constants are provided:
+
+| Constant | Value | Color |
+| ---- | ---- | ---- |
+| `tput.Black` | 0 | Black |
+| `tput.Red` | 1 | Red |
+| `tput.Green` | 2 | Green |
+| `tput.Yellow` | 3 | Yellow |
+| `tput.Blue` | 4 | Blue |
+| `tput.Magenta` | 5 | Magenta |
+| `tput.Cyan` | 6 | Cyan |
+| `tput.White` | 7 | White |
+
 ### Text Effects
+
 | Function | Description |
 | ---- | ---- |
-| tput.Setaf(i int) | Set foreground color |
-| tput.Smul() | Start underlined text |
-| tput.Sgr0() | Turn off all attributes |
+| `tput.Setaf(i int) ([]byte, error)` | Set foreground color (use color constants above) |
+| `tput.Smul() ([]byte, error)` | Start underlined text |
+| `tput.Bold() ([]byte, error)` | Start bold text |
+| `tput.Sgr0() ([]byte, error)` | Turn off all attributes |
+
+### Clear / Erase
+
+| Function | Description |
+| ---- | ---- |
+| `tput.El() ([]byte, error)` | Erase to end of line |
+| `tput.El1() ([]byte, error)` | Erase to beginning of line |
+| `tput.Ed() ([]byte, error)` | Erase to end of screen |
+| `tput.Clear() ([]byte, error)` | Clear the screen |
+
+### Printf helper
+
+`tput.Printf` applies one or more display options before printing formatted output, and resets all attributes afterwards.
+
+```go
+type Option struct {
+    Attribute int  // TextColor, UnderLine, or BoldText
+    Color     int  // used when Attribute == TextColor
+}
+```
+
+| Attribute constant | Description |
+| ---- | ---- |
+| `tput.TextColor` | Set foreground color (requires `Color` field) |
+| `tput.UnderLine` | Underline the text |
+| `tput.BoldText` | Bold the text |
+
+## Examples
+
+### Print a colored message
+
+```go
+package main
+
+import (
+    "github.com/kotaoue/go-tput"
+)
+
+func main() {
+    tput.Printf(
+        []*tput.Option{
+            {Attribute: tput.TextColor, Color: tput.Red},
+        },
+        "Hello, %s!\n", "world",
+    )
+}
+```
+
+### Print bold underlined text
+
+```go
+package main
+
+import (
+    "github.com/kotaoue/go-tput"
+)
+
+func main() {
+    tput.Printf(
+        []*tput.Option{
+            {Attribute: tput.BoldText},
+            {Attribute: tput.UnderLine},
+        },
+        "Important notice\n",
+    )
+}
+```
+
+### Print a horizontal rule
+
+```go
+package main
+
+import (
+    "github.com/kotaoue/go-tput"
+)
+
+func main() {
+    tput.HR()
+}
+```
+
+### Use low-level color / effect functions directly
+
+```go
+package main
+
+import (
+    "fmt"
+    "log"
+    "github.com/kotaoue/go-tput"
+)
+
+func main() {
+    if _, err := tput.Setaf(tput.Green); err != nil {
+        log.Fatal(err)
+    }
+    if _, err := tput.Bold(); err != nil {
+        log.Fatal(err)
+    }
+    fmt.Println("Success!")
+    tput.Sgr0()
+}
+```
 
 ## Links
 * [kotaoue/go-tput-tester](https://github.com/kotaoue/go-tput-tester)
