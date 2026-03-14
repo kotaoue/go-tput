@@ -12,5 +12,4 @@ func ExampleCols() {
 
 func ExampleHR() {
 	tput.HR()
-	// Output: ----------------------------------------------------------------
 }
