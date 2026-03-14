@@ -3,7 +3,7 @@ package tput_test
 import (
 	"fmt"
 
-	"github.com/kotaoue/go-tput"
+	"github.com/kotaoue/go-tput/tput"
 )
 
 func ExampleCols() {
