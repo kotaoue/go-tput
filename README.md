@@ -70,6 +70,52 @@ type Option struct {
 
 ## Examples
 
+### Build a styled CLI status report
+
+This example shows a typical use case: printing a terminal report with colored status indicators, bold section headers, and horizontal rules.
+
+```go
+package main
+
+import (
+    "fmt"
+
+    "github.com/kotaoue/go-tput"
+)
+
+func main() {
+    tput.HR()
+    tput.Printf([]*tput.Option{{Attribute: tput.BoldText}}, "Build Report\n")
+    tput.HR()
+
+    tput.Printf([]*tput.Option{{Attribute: tput.TextColor, Color: tput.Green}}, "[PASS] ")
+    fmt.Println("All tests passed")
+
+    tput.Printf([]*tput.Option{{Attribute: tput.TextColor, Color: tput.Yellow}}, "[WARN] ")
+    fmt.Println("Deprecated API usage detected")
+
+    tput.Printf([]*tput.Option{
+        {Attribute: tput.TextColor, Color: tput.Red},
+        {Attribute: tput.BoldText},
+    }, "[FAIL] ")
+    fmt.Println("Build failed: missing dependency")
+
+    tput.HR()
+}
+```
+
+Output:
+
+```
+--------------------------------------------------------------------------------
+Build Report
+--------------------------------------------------------------------------------
+[PASS] All tests passed                        <- green
+[WARN] Deprecated API usage detected           <- yellow
+[FAIL] Build failed: missing dependency        <- bold red
+--------------------------------------------------------------------------------
+```
+
 ### Print a colored message
 
 ```go
@@ -109,20 +155,6 @@ func main() {
 }
 ```
 
-### Print a horizontal rule
-
-```go
-package main
-
-import (
-    "github.com/kotaoue/go-tput"
-)
-
-func main() {
-    tput.HR()
-}
-```
-
 ### Use low-level color / effect functions directly
 
 ```go
@@ -131,6 +163,7 @@ package main
 import (
     "fmt"
     "log"
+
     "github.com/kotaoue/go-tput"
 )
 
