@@ -1,6 +1,6 @@
 # go-tput
 
-[![CI](https://github.com/kotaoue/go-tput/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/kotaoue/go-tput/actions/workflows/ci.yml)
+[![Go](https://github.com/kotaoue/go-tput/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/kotaoue/go-tput/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/kotaoue/go-tput/branch/main/graph/badge.svg)](https://codecov.io/gh/kotaoue/go-tput)
 [![Go Report Card](https://goreportcard.com/badge/github.com/kotaoue/go-tput)](https://goreportcard.com/report/github.com/kotaoue/go-tput)
 [![License](https://img.shields.io/github/license/kotaoue/go-tput)](https://github.com/kotaoue/go-tput/blob/main/LICENSE)
