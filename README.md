@@ -1,6 +1,11 @@
 # go-tput
 execute tput by Go.
 
+## Import
+```go
+import "github.com/kotaoue/go-tput/tput"
+```
+
 ## Usage
 ### Reading
 | Function | Description |
