@@ -106,7 +106,7 @@ func main() {
 
 Output:
 
-![Build report showing bold header, green [PASS] for all tests passed, yellow [WARN] for deprecated API usage, and bold red [FAIL] for missing dependency](https://github.com/user-attachments/assets/9a015302-03bf-496d-bbb3-c71aee240b87)
+![Build report showing bold header, green [PASS] for all tests passed, yellow [WARN] for deprecated API usage, and bold red [FAIL] for missing dependency](docs/images/example.png)
 
 ### Print a colored message
 
