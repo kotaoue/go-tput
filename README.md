@@ -1,5 +1,10 @@
 # go-tput
 
+[![Go](https://github.com/kotaoue/go-tput/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/kotaoue/go-tput/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/kotaoue/go-tput/branch/main/graph/badge.svg)](https://codecov.io/gh/kotaoue/go-tput)
+[![Go Report Card](https://goreportcard.com/badge/github.com/kotaoue/go-tput)](https://goreportcard.com/report/github.com/kotaoue/go-tput)
+[![License](https://img.shields.io/github/license/kotaoue/go-tput)](https://github.com/kotaoue/go-tput/blob/main/LICENSE)
+
 Execute [tput](https://man7.org/linux/man-pages/man1/tput.1.html) commands from Go.  
 `go-tput` provides a thin wrapper around the `tput` terminal utility, letting you apply colors, text effects, and terminal control sequences directly from your Go programs.
 
@@ -175,7 +180,3 @@ func main() {
     tput.Sgr0()
 }
 ```
-
-## Links
-
-* [kotaoue/go-tput-tester](https://github.com/kotaoue/go-tput-tester)
