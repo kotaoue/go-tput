@@ -22,4 +22,6 @@ jobs:
         run: go build ./...
 
       - name: Test
+        env:
+          TERM: xterm-256color
         run: go test -v -race ./...
