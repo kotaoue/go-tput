@@ -8,24 +8,24 @@ import (
 
 func TestSetaf(t *testing.T) {
 	if _, err := tput.Setaf(tput.Red); err != nil {
-		t.Skipf("setaf not supported by this terminal: %v", err)
+		t.Errorf("Setaf(%d) returned error: %v", tput.Red, err)
 	}
 }
 
 func TestSmul(t *testing.T) {
 	if _, err := tput.Smul(); err != nil {
-		t.Skipf("smul not supported by this terminal: %v", err)
+		t.Errorf("Smul() returned error: %v", err)
 	}
 }
 
 func TestBold(t *testing.T) {
 	if _, err := tput.Bold(); err != nil {
-		t.Skipf("bold not supported by this terminal: %v", err)
+		t.Errorf("Bold() returned error: %v", err)
 	}
 }
 
 func TestSgr0(t *testing.T) {
 	if _, err := tput.Sgr0(); err != nil {
-		t.Skipf("sgr0 not supported by this terminal: %v", err)
+		t.Errorf("Sgr0() returned error: %v", err)
 	}
 }
